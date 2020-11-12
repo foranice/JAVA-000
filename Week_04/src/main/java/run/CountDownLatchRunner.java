@@ -13,7 +13,7 @@ public class CountDownLatchRunner implements AsyncTaskRunner{
     public void run(int param) {
         task = new CountDownTask(param);
         thread= new Thread(task);
-        thread.run();
+        thread.start();
     }
 
     @Override

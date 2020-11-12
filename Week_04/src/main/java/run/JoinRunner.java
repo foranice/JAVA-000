@@ -12,7 +12,7 @@ public class JoinRunner implements AsyncTaskRunner {
     public void run(int param) {
          task = new Task(param);
          thread= new Thread(task);
-         thread.run();
+         thread.start();
 
     }
     public Integer get(){

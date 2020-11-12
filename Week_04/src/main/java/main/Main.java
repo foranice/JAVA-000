@@ -46,6 +46,7 @@ public class Main {
     }
     static {
         classes = new Class[]{
+                FileRunner.class,
                 CountDownLatchRunner.class,
                 CompletableFutureRunner.class,
                 JoinRunner.class,

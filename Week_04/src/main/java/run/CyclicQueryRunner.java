@@ -11,8 +11,8 @@ public class CyclicQueryRunner implements AsyncTaskRunner{
     private Task task;
     public void run(int param) {
         task = new Task(param);
-        thread= new Thread(task);
-        thread.run();
+        thread = new Thread(task);
+        thread.start();
 
 
     }
