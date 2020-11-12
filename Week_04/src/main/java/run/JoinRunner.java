@@ -2,6 +2,9 @@ package run;
 
 import task.Task;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class JoinRunner implements AsyncTaskRunner {
     private Integer result;
     private Thread thread;
@@ -21,5 +24,12 @@ public class JoinRunner implements AsyncTaskRunner {
             e.printStackTrace();
         }
         return task.getResult();
+    }
+    public Map<String,Integer> getAll(Map<String,AsyncTaskRunner> tasks){
+        Map<String,Integer> result = new HashMap<>();
+        for (Map.Entry<String,AsyncTaskRunner> task : tasks.entrySet()) {
+            result.put(task.getKey(),task.getValue().get());
+        }
+        return result;
     }
 }

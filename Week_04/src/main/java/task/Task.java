@@ -1,8 +1,9 @@
 package task;
 
 import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 
-public class Task implements Callable<Integer>,Runnable {
+public class Task implements Callable<Integer>,Runnable, Supplier<Integer> {
     private Integer result;
     private int param=36;
     public Task(){
@@ -29,5 +30,10 @@ public class Task implements Callable<Integer>,Runnable {
         if ( a < 2)
             return 1;
         return fibo(a-1) + fibo(a-2);
+    }
+
+    @Override
+    public Integer get() {
+        return sum();
     }
 }

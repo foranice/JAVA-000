@@ -1,11 +1,15 @@
-import run.AsyncTaskRunner;
-import run.CallableRunner;
-import run.CyclicQueryRunner;
-import run.JoinRunner;
+package main;
+
+import run.*;
 import task.Task;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.CountDownLatch;
 
 public class Main {
     static Class[] classes ;
+    public static final CountDownLatch latch = new CountDownLatch(3);
     public static void main(String[] args) {
         for (Class cls:classes
              ) {
@@ -19,9 +23,14 @@ public class Main {
                 runner2.run(37);
                 runner3.run(38);
                 System.out.println("-----------------"+ cls.getName()+"-------------------");
-                System.out.println("result1："+ runner1.get());
-                System.out.println("result2："+ runner2.get());
-                System.out.println("result2："+ runner3.get());
+                TreeMap<String,AsyncTaskRunner> tasks=new TreeMap<>();
+                tasks.put("result1",runner1);
+                tasks.put("result2",runner2);
+                tasks.put("result3",runner3);
+                Map<String,Integer> result = AsyncTaskRunner.getAll(tasks,cls);
+                for (Map.Entry<String,Integer> res : result.entrySet()){
+                    System.out.println(res.getKey()+":"+res.getValue());
+                }
                 System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
                 System.out.println("-----------------"+ cls.getName()+"-------------------");
             }
@@ -31,11 +40,14 @@ public class Main {
             System.out.println("                                      ");
 
         }
+        System.exit(0);
 
 
     }
     static {
         classes = new Class[]{
+                CountDownLatchRunner.class,
+                CompletableFutureRunner.class,
                 JoinRunner.class,
                 CyclicQueryRunner.class,
                 CallableRunner.class

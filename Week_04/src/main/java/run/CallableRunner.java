@@ -2,6 +2,8 @@ package run;
 
 import task.Task;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.*;
 
@@ -24,6 +26,14 @@ public class CallableRunner implements AsyncTaskRunner {
         return -1;
 
     }
+   public  Map<String,Integer> getAll(Map<String,AsyncTaskRunner> tasks){
+       Map<String,Integer> result = new HashMap<>();
+       for (Map.Entry<String,AsyncTaskRunner> task : tasks.entrySet()) {
+           result.put(task.getKey(),task.getValue().get());
+       }
+       return result;
+   }
+
     static {
         workQueye=new ArrayBlockingQueue<Runnable>(1000);
         executor = new ThreadPoolExecutor(20,30,3, TimeUnit.SECONDS,workQueye);
