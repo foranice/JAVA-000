@@ -48,6 +48,7 @@ public class Main {
     }
     static {
         classes = new Class[]{
+                EventMessageRunner.class,
                 CyclicBarrierRunner.class,
                 FileRunner.class,
                 CountDownLatchRunner.class,

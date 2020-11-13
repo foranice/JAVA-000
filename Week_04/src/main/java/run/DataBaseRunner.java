@@ -1,7 +1,6 @@
 package run;
 
-import main.Main;
-import task.Task;
+import helper.Task;
 
 import java.sql.*;
 import java.util.HashMap;

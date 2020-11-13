@@ -1,7 +1,7 @@
 package run;
 
 import main.Main;
-import task.Task;
+import helper.Task;
 
 import java.util.HashMap;
 import java.util.Map;
