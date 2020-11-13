@@ -1,15 +1,17 @@
 package main;
 
 import run.*;
-import task.Task;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.CountDownLatch;
-
+import java.util.concurrent.CyclicBarrier;
 public class Main {
     static Class[] classes ;
     public static final CountDownLatch latch = new CountDownLatch(3);
+    public static CyclicBarrier  barrier = new CyclicBarrier(3, ()->{
+        CyclicBarrierRunner.finish = true;
+    });
+
     public static void main(String[] args) {
         for (Class cls:classes
              ) {
@@ -23,7 +25,7 @@ public class Main {
                 runner2.run(37);
                 runner3.run(38);
                 System.out.println("-----------------"+ cls.getName()+"-------------------");
-                TreeMap<String,AsyncTaskRunner> tasks=new TreeMap<>();
+                TreeMap<String,AsyncTaskRunner> tasks = new TreeMap<>();
                 tasks.put("result1",runner1);
                 tasks.put("result2",runner2);
                 tasks.put("result3",runner3);
@@ -46,12 +48,14 @@ public class Main {
     }
     static {
         classes = new Class[]{
+                CyclicBarrierRunner.class,
                 FileRunner.class,
                 CountDownLatchRunner.class,
                 CompletableFutureRunner.class,
                 JoinRunner.class,
                 CyclicQueryRunner.class,
-                CallableRunner.class
+                CallableRunner.class,
+                DataBaseRunner.class
         };
     }
 }
