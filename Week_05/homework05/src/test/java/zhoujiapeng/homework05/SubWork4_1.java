@@ -14,7 +14,7 @@ import zhoujiapeng.beans.DemoInterface;
 
 @SpringBootTest(classes= Homework05Application.class)
 @RunWith(SpringJUnit4ClassRunner.class)
-public class SubWork1 {
+public class SubWork4_1 {
     @Autowired
     @Qualifier("Xml")
     private DemoInterface xmlDemo;
@@ -33,4 +33,5 @@ public class SubWork1 {
         assert javaConfigDemo.get().equals("load from java config");
         System.out.println(javaConfigDemo.get());
     }
+
 }

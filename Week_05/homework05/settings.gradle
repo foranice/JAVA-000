@@ -1,1 +1,3 @@
 rootProject.name = 'homework05'
+include 'user-config-starter'
+

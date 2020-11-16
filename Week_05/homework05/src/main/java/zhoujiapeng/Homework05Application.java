@@ -1,5 +1,6 @@
 package zhoujiapeng;
 
+import io.kimmking.spring01.Student;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
@@ -11,6 +12,9 @@ public class Homework05Application {
 
         SpringApplication.run(Homework05Application.class, args
         );
+    }
+    Homework05Application(){
+
     }
 
 }
