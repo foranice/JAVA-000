@@ -4,5 +4,5 @@
 SubWork4_1<br>
 4.（必做）给前面课程提供的 Student/Klass/School 实现自动配置和 Starter。<br>
 SubWork6_4<br>
-6.（必做）研究一下 JDBC 接口和数据库连接池，掌握它们的设计和用法：
+6.（必做）研究一下 JDBC 接口和数据库连接池，掌握它们的设计和用法：<br>
 SubWork6_6<br>
