@@ -54,11 +54,11 @@ public class UserServiceJbdcPreImpl implements UserService{
     @Override
     public boolean alterName(Integer userId, String newName) {
         try(Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)){
-            String update = "update user set name = ? where id = ?";
+            String update = "update user set name =? where id =?";
             PreparedStatement ps =conn.prepareStatement(update);
             ps.setString(1,newName);
             ps.setInt(2,userId);
-            conn.createStatement().execute(update);
+            ps.execute();
         }
         catch (Exception ex){
             ex.printStackTrace();

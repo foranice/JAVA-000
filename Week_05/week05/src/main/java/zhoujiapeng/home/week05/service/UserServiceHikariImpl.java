@@ -41,7 +41,7 @@ public class UserServiceHikariImpl implements UserService {
     @Override
     public boolean alterName(Integer userId, String newName) {
         try{
-            jdbcTemplate.update("update user set name = ? where id = ?",new Object[]{userId,newName});
+            jdbcTemplate.update("update user set name = ? where id = ?",new Object[]{newName,userId});
             return true;
         }
         catch (Exception ex){

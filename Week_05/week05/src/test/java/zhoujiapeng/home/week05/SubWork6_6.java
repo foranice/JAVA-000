@@ -50,15 +50,18 @@ public class SubWork6_6 {
         user2.setId(2345);
         user2.setName("嘿嘿嘿嘿");
         user2.setAge(32);
+
         service.add(user1);
         service.add(user2);
         userList = service.queryAll();
         System.out.println(userList);
+
         service.deleteById(1234);
-        userList = JbdcUserPreService.queryAll();
+        userList = service.queryAll();
         System.out.println(userList);
+
         service.alterName(2345,"呃呃呃呃");
-        userList = JbdcUserPreService.queryAll();
+        userList = service.queryAll();
         System.out.println(userList);
     }
 }
